@@ -147,6 +147,8 @@ State run_motor_controller() {
     bool f = (obstacle_location & 2);   // Front
     bool r = (obstacle_location & 1);   // Right
 
+
+    State state_this_tick = current_state; //이번 틱에서 상태 백업
     // 2. Process (FSM)
     switch (current_state) {
     case ST_FORWARD:
@@ -189,21 +191,14 @@ State run_motor_controller() {
     case ST_BACKWARD:
         move_backward(true);
         tick_counter++;
-        if (tick_counter >= 5) {        // 5틱 후 회전
-            if (!r) {                   // 우회전 우선
-                current_state = ST_TURN_RIGHT;
-                tick_counter = 0;
-            }
-            else {                      // 좌회전
-                current_state = ST_TURN_LEFT;
-                tick_counter = 0;
-            }
+        if (tick_counter >= 5) {
+            if (!r) current_state = ST_TURN_RIGHT;
+            else    current_state = ST_TURN_LEFT;
+            tick_counter = 0;
         }
         break;
     }
-
-    // 디버깅용 printf는 여기서 안 찍는다
-    return current_state;
+    return state_this_tick;
 }
 // ~MOTOR CONTROLLER MODULE
 
@@ -246,7 +241,7 @@ int main() {
         // 2. Cleaner Controller 실행 & 상태 넘겨주기
         run_cleaner_controller(motor_status);
 
-        print_system_status(current_state,
+        print_system_status(motor_status,
             last_obstacle_loc,
             last_dust_existence,
             tick_counter,

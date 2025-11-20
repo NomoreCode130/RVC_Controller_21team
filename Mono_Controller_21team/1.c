@@ -24,6 +24,8 @@ typedef enum { CMD_OFF, CMD_ON, CMD_UP } CleanerCmd;    //Cleaner command
 static State current_state = ST_FORWARD;
 static int tick_counter = 0; // 회전 시간(5틱) 체크용
 
+static int dust_power_ticks = 0;  // UP 유지 시간(틱) 카운터
+
 // <<HARDWARE EMULATOR>>
 void wait_tick(int ms) { 
     Sleep(ms);
@@ -133,8 +135,16 @@ void main_controller() {
     switch (current_state) {
     case ST_FORWARD:
         // 청소 제어
-        if (dust_existence) cleaner_control(CMD_UP);
-        else cleaner_control(CMD_ON);
+        if (dust_existence) {
+            dust_power_ticks = 5;
+        }
+        if (dust_power_ticks > 0) {
+            cleaner_control(CMD_UP);
+            dust_power_ticks--;           // 한 틱 소모
+        }
+        else {
+            cleaner_control(CMD_ON);
+        }
 
         // Action: 모터 제어 (전진)
         move_forward(true);
@@ -156,6 +166,7 @@ void main_controller() {
 
     case ST_TURN_LEFT:
         cleaner_control(CMD_OFF); // 회전 중 청소 끔
+        dust_power_ticks = 0;
         turn_left(true);
 
         tick_counter++;
@@ -167,6 +178,7 @@ void main_controller() {
 
     case ST_TURN_RIGHT:
         cleaner_control(CMD_OFF);
+        dust_power_ticks = 0;
         turn_right(true);
 
         tick_counter++;
@@ -178,6 +190,7 @@ void main_controller() {
 
     case ST_BACKWARD:
         cleaner_control(CMD_OFF);
+        dust_power_ticks = 0;
         move_backward(true);
 
         tick_counter++;
