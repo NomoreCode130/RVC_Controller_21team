@@ -35,7 +35,7 @@ bool read_hardware_sensor() {
     return detected;
 }
 
-void write_hardware_motor(char* action) { printf(" >> [MOTOR]: %s\n\n", action);}
+void write_hardware_motor(char* action) { printf(" >> [MOTOR]: %s\n", action);}
 
 void write_hardware_cleaner(char* status) { printf(" >> [CLEANER]: %s\n", status);}
 
@@ -201,7 +201,7 @@ void main_controller() {
 
 
 int main() {
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
 
     printf("=== RVC Mono-Controller System Started ===\n");
     printf("=== Press Ctrl+C to Stop ===\n\n");

@@ -19,19 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cleaner_controller.h" />
-    <ClInclude Include="hal_emulator.h" />
-    <ClInclude Include="motor_controller.h" />
-    <ClInclude Include="rvc_actions.h" />
-    <ClInclude Include="rvc_sensors.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="cleaner_controller.c" />
-    <ClCompile Include="hal_emulator.c" />
-    <ClCompile Include="main.c" />
-    <ClCompile Include="motor_controller.c" />
-    <ClCompile Include="rvc_actions.c" />
-    <ClCompile Include="rvc_sensors.c" />
+    <ClCompile Include="2.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
