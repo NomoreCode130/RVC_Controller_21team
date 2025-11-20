@@ -123,17 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="hal_emulator.c" />
-    <ClCompile Include="main.c" />
-    <ClCompile Include="rvc_actions.c" />
-    <ClCompile Include="rvc_controller.c" />
-    <ClCompile Include="rvc_sensors.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="hal_emulator.h" />
-    <ClInclude Include="rvc_actions.h" />
-    <ClInclude Include="rvc_controller.h" />
-    <ClInclude Include="rvc_sensors.h" />
+    <ClCompile Include="1.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

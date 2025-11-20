@@ -15,34 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="hal_emulator.c">
+    <ClCompile Include="1.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="rvc_sensors.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="rvc_actions.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="rvc_controller.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="main.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="hal_emulator.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="rvc_sensors.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="rvc_actions.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="rvc_controller.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
